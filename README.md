@@ -73,6 +73,17 @@ Attributes may appear in any order and are separated by whitespace.
 its own starting point is rejected by `validate` rather than silently
 accepted.
 
+## CLI
+
+The crate also builds a `retry-spec` binary for checking and reformatting
+policy files from the command line:
+
+```
+retry-spec check policy.txt          # exit 0 and print "ok" if valid, exit 1 with the error otherwise
+retry-spec fmt policy.txt            # print the canonical form to stdout
+retry-spec fmt --write policy.txt    # rewrite the file in place with the canonical form
+```
+
 ## Design notes
 
 - No third-party dependencies, standard library only.
