@@ -366,7 +366,7 @@ fn parse_decimal_thousandths(cursor: &mut Cursor) -> Result<u32, ParseError> {
     let whole: u32 = whole
         .try_into()
         .map_err(|_| cursor.error_at(start, "number is too large"))?;
-    Ok(whole.saturating_mul(1000) + frac)
+    Ok(whole.saturating_mul(1000).saturating_add(frac))
 }
 
 fn parse_uint(cursor: &mut Cursor) -> Result<u64, ParseError> {
